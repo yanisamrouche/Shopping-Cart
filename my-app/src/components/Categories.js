@@ -4,6 +4,7 @@ function Categories(props) {
     const { setActiveCategory, categories, activeCategory } = props;
     return(
         <div className='lmj-categories'>
+            <h5>Choose a category...</h5>
             <select
                 value={activeCategory}
                 onChange={(e) => setActiveCategory(e.target.value)}
@@ -16,7 +17,7 @@ function Categories(props) {
                     </option>
                 ))}
             </select>
-            <button onClick={() => setActiveCategory('')}>Réinitialiser</button>
+            <button id='ren' onClick={() => setActiveCategory('')}>Réinitialiser</button>
         </div>
 
     )

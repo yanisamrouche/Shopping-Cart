@@ -12,3 +12,9 @@
     flex-direction: column;
     text-transform: capitalize;
 }
+img:hover{
+    transform: translateY(-50px);
+}
+img:hover:before {
+    opacity: 1;
+}
