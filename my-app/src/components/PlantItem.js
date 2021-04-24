@@ -10,6 +10,7 @@ function PlantItem(props) {
                 <CareScale careType='water' scaleValue={water} />
                 <CareScale careType='light' scaleValue={light}/>
             </div>
+
         </li>
     )
 
