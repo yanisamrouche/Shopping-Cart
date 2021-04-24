@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/Cart.css'
 function Cart(props) {
     const {cart, updateCart} = props;
@@ -7,19 +7,36 @@ function Cart(props) {
     const total = cart.reduce(
         (acc, plantType) => acc + plantType.amount * plantType.price, 0
     )
+    /*
+    useEffect(()=>{
+        alert(`You have ${total} to pay`)
+    }, [total])
+
+     */
+
 
     return isOpen ? (
                     <div className='lmj-cart'>
                         <button onClick={() => setIsOpen(false)}>Close Cart</button>
-                        <h2>Cart</h2>
-                        {cart.map(({name, price, amount}, i)=>(
-                            <div key={`${name}-${i}`}>
-                                {name} : {price} x {amount}
+                        {cart.length > 0 ? (
+                            <div>
+                                <h2>Cart</h2>
+                                <ul>
+                                {cart.map(({name, price, amount}, i)=>(
+                                        <div key={`${name}-${i}`}>
+                                            {name} : {price} x {amount}
 
+                                        </div>
+                                    ))}
+                                </ul>
+                                <h3>Total : {total }€</h3>
+                                <button onClick={()=>updateCart([])}>Clear Cart</button>
                             </div>
-                        ))}
-                        <h3>Total : {total }€</h3>
-                        <button onClick={()=>updateCart([])}>Clear Cart</button>
+                        )
+                            : (
+                            <div>Your Cart is empty</div>
+                            )}
+
                     </div>)
                :           (
                         <div className='lmj-cart-closed'>
